@@ -33,6 +33,9 @@ def foryify():
         print(element)
     b = [i ** 2 for i in range(101)]
     print(b)
+    print(b[20:40])
+    print(b[-1])
+    print(b[-1::-1])
 
 
 listy()
