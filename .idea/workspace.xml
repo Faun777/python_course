@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5335f457-f312-46e0-8fcd-a3b0429f6a10" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/my_solutions/wykresy.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/my_solutions/tab_2D.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/my_solutions/tab_a.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/my_solutions/tab_text" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/my_solutions/wykresy.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/my_solutions/zajecia3.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/lab3/zadanie1-template.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/my_solutions/tab_2D.npy" afterPath="$PROJECT_DIR$/my_solutions/zajecia3/tab_2D.npy" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/my_solutions/tab_a.npy" afterPath="$PROJECT_DIR$/my_solutions/zajecia3/tab_a.npy" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/my_solutions/tab_text" afterPath="$PROJECT_DIR$/my_solutions/zajecia3/tab_text" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/my_solutions/wykresy.py" afterPath="$PROJECT_DIR$/my_solutions/zajecia3/wykresy.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/my_solutions/zajecia3.py" afterPath="$PROJECT_DIR$/my_solutions/zajecia3/zajecia3.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/lab3/zadanie1-template.py" afterPath="$PROJECT_DIR$/my_solutions/zajecia3/zadanie1JZ.py" />
     </list>
     <ignored path="python_course.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,7 +46,7 @@
         </entry>
       </file>
       <file leaf-file-name="zajecia3.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_solutions/zajecia3.py">
+        <entry file="file://$PROJECT_DIR$/my_solutions/zajecia3/zajecia3.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
               <caret line="34" column="15" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
@@ -44,14 +55,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wykresy.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/my_solutions/wykresy.py">
+      <file leaf-file-name="wykresy.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/my_solutions/zajecia3/wykresy.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="66">
               <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zadanie1JZ.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/my_solutions/zajecia3/zadanie1JZ.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -156,6 +177,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="lab3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python_course" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python_course" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lab2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -174,6 +213,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python_course" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python_course" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="my_solutions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zajecia3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -182,6 +239,11 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Python\PythonProjects\python_course\my_solutions\zajecia3" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.wykresy">
     <configuration default="false" name="porownanie" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -213,7 +275,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python_course" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/my_solutions/zajecia3.py" />
+      <option name="SCRIPT_NAME" value="D:\Python\PythonProjects\python_course\my_solutions\zajecia3\zajecia3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -230,7 +292,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python_course" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/my_solutions/wykresy.py" />
+      <option name="SCRIPT_NAME" value="D:\Python\PythonProjects\python_course\my_solutions\zajecia3\wykresy.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -421,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1463591622932</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="JZ">
+      <created>1463592274044</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1463592274044</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -483,7 +552,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_solutions/tab_text">
+    <entry file="file://$PROJECT_DIR$/my_solutions/zajecia3/tab_text">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -491,7 +560,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_solutions/zajecia3.py">
+    <entry file="file://$PROJECT_DIR$/my_solutions/zajecia3/zajecia3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="34" column="15" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
@@ -499,13 +568,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_solutions/wykresy.py">
+    <entry file="file://$PROJECT_DIR$/my_solutions/zajecia3/wykresy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_solutions/zajecia3/zadanie1JZ.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
