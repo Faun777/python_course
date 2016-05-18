@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5335f457-f312-46e0-8fcd-a3b0429f6a10" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/my_solutions/tab_2D.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/my_solutions/tab_a.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/my_solutions/tab_text" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/my_solutions/wykresy.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/my_solutions/zajecia3.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/lab3/zadanie1-template.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/my_solutions/tab_2D.npy" afterPath="$PROJECT_DIR$/my_solutions/zajecia3/tab_2D.npy" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/my_solutions/tab_a.npy" afterPath="$PROJECT_DIR$/my_solutions/zajecia3/tab_a.npy" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/my_solutions/tab_text" afterPath="$PROJECT_DIR$/my_solutions/zajecia3/tab_text" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/my_solutions/wykresy.py" afterPath="$PROJECT_DIR$/my_solutions/zajecia3/wykresy.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/my_solutions/zajecia3.py" afterPath="$PROJECT_DIR$/my_solutions/zajecia3/zajecia3.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/lab3/zadanie1-template.py" afterPath="$PROJECT_DIR$/my_solutions/zajecia3/zadanie1JZ.py" />
     </list>
     <ignored path="python_course.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,7 +58,17 @@
       <file leaf-file-name="zadanie1JZ.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/my_solutions/zajecia3/zadanie1JZ.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="528">
+              <caret line="42" column="70" selection-start-line="42" selection-start-column="70" selection-end-line="42" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zadanie1.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/solution/lab3/zadanie1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-539">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -95,6 +93,7 @@
         <option value="$PROJECT_DIR$/my_solutions/porownanie.py" />
         <option value="$PROJECT_DIR$/my_solutions/zajecia3.py" />
         <option value="$PROJECT_DIR$/my_solutions/wykresy.py" />
+        <option value="$PROJECT_DIR$/my_solutions/zajecia3/zadanie1JZ.py" />
       </list>
     </option>
   </component>
@@ -146,6 +145,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="python_course" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python_course" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python_course" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="solution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python_course" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="python_course" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="solution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lab3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -245,7 +276,7 @@
       <recent name="D:\Python\PythonProjects\python_course\my_solutions\zajecia3" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.wykresy">
+  <component name="RunManager" selected="Python.zadanie1JZ">
     <configuration default="false" name="porownanie" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -293,6 +324,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python_course" />
       <option name="SCRIPT_NAME" value="D:\Python\PythonProjects\python_course\my_solutions\zajecia3\wykresy.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="zadanie1JZ" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/my_solutions/zajecia3" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python_course" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/my_solutions/zajecia3/zadanie1JZ.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -431,16 +479,18 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Python.porownanie" />
       <item index="1" class="java.lang.String" itemvalue="Python.zajecia3" />
       <item index="2" class="java.lang.String" itemvalue="Python.wykresy" />
+      <item index="3" class="java.lang.String" itemvalue="Python.zadanie1JZ" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.wykresy" />
-        <item index="1" class="java.lang.String" itemvalue="Python.zajecia3" />
-        <item index="2" class="java.lang.String" itemvalue="Python.porownanie" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.zadanie1JZ" />
+        <item index="1" class="java.lang.String" itemvalue="Python.wykresy" />
+        <item index="2" class="java.lang.String" itemvalue="Python.zajecia3" />
+        <item index="3" class="java.lang.String" itemvalue="Python.porownanie" />
       </list>
     </recent_temporary>
   </component>
@@ -490,7 +540,21 @@
       <option name="project" value="LOCAL" />
       <updated>1463592274044</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="JZ">
+      <created>1463592488013</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1463592488013</updated>
+    </task>
+    <task id="LOCAL-00007" summary="JZ">
+      <created>1463594710688</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1463594710688</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -578,10 +642,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/solution/lab3/zadanie1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-539">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/my_solutions/zajecia3/zadanie1JZ.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="528">
+          <caret line="42" column="70" selection-start-line="42" selection-start-column="70" selection-end-line="42" selection-end-column="70" />
           <folding />
         </state>
       </provider>
