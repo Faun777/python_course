@@ -1748,7 +1748,7 @@
         <Domain name="bool" id="4551.DecomposePolyhedra.bool"/>
       </Property>
       <Property name="FileName" id="4551.FileName" number_of_elements="1">
-        <Element index="0" value="/home/wgryglas/simflow/python_course/python_course/python_course.foam"/>
+        <Element index="0" value="FOAM_FILE"/>
         <Domain name="files" id="4551.FileName.files"/>
       </Property>
       <Property name="LagrangianArrayInfo" id="4551.LagrangianArrayInfo"/>
@@ -2222,7 +2222,7 @@
       <Item id="4757" name="ScalarBarWidgetRepresentation3"/>
     </ProxyCollection>
     <ProxyCollection name="sources">
-      <Item id="4551" name="python_course.foam"/>
+      <Item id="4551" name="FOAM_NAME"/>
     </ProxyCollection>
     <ProxyCollection name="timekeeper">
       <Item id="259" name="TimeKeeper1"/>
@@ -2230,161 +2230,6 @@
     <ProxyCollection name="views">
       <Item id="2770" name="RenderView1"/>
     </ProxyCollection>
-    <CustomProxyDefinitions>
-      <CustomProxyDefinition name="Tu" group="filters">
-        <CompoundSourceProxy id="6854" servers="1">
-          <Proxy group="filters" type="Calculator" id="6765" servers="1" compound_name="Calculator2">
-            <Property name="AttributeMode" id="6765.AttributeMode" number_of_elements="1">
-              <Element index="0" value="1"/>
-              <Domain name="enum" id="6765.AttributeMode.enum">
-                <Entry value="1" text="Point Data"/>
-                <Entry value="2" text="Cell Data"/>
-              </Domain>
-            </Property>
-            <Property name="CoordinateResults" id="6765.CoordinateResults" number_of_elements="1">
-              <Element index="0" value="0"/>
-              <Domain name="bool" id="6765.CoordinateResults.bool"/>
-            </Property>
-            <Property name="Function" id="6765.Function" number_of_elements="1">
-              <Element index="0" value="sqrt(2/3*turbKinEnergy)/9.4"/>
-            </Property>
-            <Property name="Input" id="6765.Input" number_of_elements="1">
-              <Domain name="groups" id="6765.Input.groups"/>
-              <Domain name="input_array" id="6765.Input.input_array"/>
-              <Domain name="input_type" id="6765.Input.input_type"/>
-            </Property>
-            <Property name="ReplaceInvalidValues" id="6765.ReplaceInvalidValues" number_of_elements="1">
-              <Element index="0" value="1"/>
-              <Domain name="bool" id="6765.ReplaceInvalidValues.bool"/>
-            </Property>
-            <Property name="ReplacementValue" id="6765.ReplacementValue" number_of_elements="1">
-              <Element index="0" value="0"/>
-              <Domain name="range" id="6765.ReplacementValue.range"/>
-            </Property>
-            <Property name="ResultArrayName" id="6765.ResultArrayName" number_of_elements="1">
-              <Element index="0" value="Tu"/>
-            </Property>
-            <Property name="ResultNormals" id="6765.ResultNormals" number_of_elements="1">
-              <Element index="0" value="0"/>
-              <Domain name="bool" id="6765.ResultNormals.bool"/>
-            </Property>
-            <Property name="ResultTCoords" id="6765.ResultTCoords" number_of_elements="1">
-              <Element index="0" value="0"/>
-              <Domain name="bool" id="6765.ResultTCoords.bool"/>
-            </Property>
-          </Proxy>
-          <ExposedProperties>
-            <Property name="Input" proxy_name="Calculator2" exposed_name="Input"/>
-          </ExposedProperties>
-          <OutputPort name="Output" proxy="Calculator2" port_index="0"/>
-          <Hints>
-            <ShowInMenu/>
-          </Hints>
-        </CompoundSourceProxy>
-      </CustomProxyDefinition>
-      <CustomProxyDefinition name="U2D" group="filters">
-        <CompoundSourceProxy id="4781" servers="1">
-          <Proxy group="filters" type="Calculator" id="4676" servers="1" compound_name="Calculator1">
-            <Property name="AttributeMode" id="4676.AttributeMode" number_of_elements="1">
-              <Element index="0" value="1"/>
-              <Domain name="enum" id="4676.AttributeMode.enum">
-                <Entry value="1" text="Point Data"/>
-                <Entry value="2" text="Cell Data"/>
-              </Domain>
-            </Property>
-            <Property name="CoordinateResults" id="4676.CoordinateResults" number_of_elements="1">
-              <Element index="0" value="0"/>
-              <Domain name="bool" id="4676.CoordinateResults.bool"/>
-            </Property>
-            <Property name="Function" id="4676.Function" number_of_elements="1">
-              <Element index="0" value="iHat*u+jHat*v"/>
-            </Property>
-            <Property name="Input" id="4676.Input" number_of_elements="1">
-              <Domain name="groups" id="4676.Input.groups"/>
-              <Domain name="input_array" id="4676.Input.input_array"/>
-              <Domain name="input_type" id="4676.Input.input_type"/>
-            </Property>
-            <Property name="ReplaceInvalidValues" id="4676.ReplaceInvalidValues" number_of_elements="1">
-              <Element index="0" value="1"/>
-              <Domain name="bool" id="4676.ReplaceInvalidValues.bool"/>
-            </Property>
-            <Property name="ReplacementValue" id="4676.ReplacementValue" number_of_elements="1">
-              <Element index="0" value="0"/>
-              <Domain name="range" id="4676.ReplacementValue.range"/>
-            </Property>
-            <Property name="ResultArrayName" id="4676.ResultArrayName" number_of_elements="1">
-              <Element index="0" value="U"/>
-            </Property>
-            <Property name="ResultNormals" id="4676.ResultNormals" number_of_elements="1">
-              <Element index="0" value="0"/>
-              <Domain name="bool" id="4676.ResultNormals.bool"/>
-            </Property>
-            <Property name="ResultTCoords" id="4676.ResultTCoords" number_of_elements="1">
-              <Element index="0" value="0"/>
-              <Domain name="bool" id="4676.ResultTCoords.bool"/>
-            </Property>
-          </Proxy>
-          <ExposedProperties>
-            <Property name="Input" proxy_name="Calculator1" exposed_name="Input"/>
-          </ExposedProperties>
-          <OutputPort name="Output" proxy="Calculator1" port_index="0"/>
-          <Hints>
-            <ShowInMenu/>
-          </Hints>
-        </CompoundSourceProxy>
-      </CustomProxyDefinition>
-      <CustomProxyDefinition name="U2DRed" group="filters">
-        <CompoundSourceProxy id="6840" servers="1">
-          <Proxy group="filters" type="Calculator" id="6727" servers="1" compound_name="Calculator1">
-            <Property name="AttributeMode" id="6727.AttributeMode" number_of_elements="1">
-              <Element index="0" value="1"/>
-              <Domain name="enum" id="6727.AttributeMode.enum">
-                <Entry value="1" text="Point Data"/>
-                <Entry value="2" text="Cell Data"/>
-              </Domain>
-            </Property>
-            <Property name="CoordinateResults" id="6727.CoordinateResults" number_of_elements="1">
-              <Element index="0" value="0"/>
-              <Domain name="bool" id="6727.CoordinateResults.bool"/>
-            </Property>
-            <Property name="Function" id="6727.Function" number_of_elements="1">
-              <Element index="0" value="iHat*V03+jHat*V04"/>
-            </Property>
-            <Property name="Input" id="6727.Input" number_of_elements="1">
-              <Domain name="groups" id="6727.Input.groups"/>
-              <Domain name="input_array" id="6727.Input.input_array"/>
-              <Domain name="input_type" id="6727.Input.input_type"/>
-            </Property>
-            <Property name="ReplaceInvalidValues" id="6727.ReplaceInvalidValues" number_of_elements="1">
-              <Element index="0" value="1"/>
-              <Domain name="bool" id="6727.ReplaceInvalidValues.bool"/>
-            </Property>
-            <Property name="ReplacementValue" id="6727.ReplacementValue" number_of_elements="1">
-              <Element index="0" value="0"/>
-              <Domain name="range" id="6727.ReplacementValue.range"/>
-            </Property>
-            <Property name="ResultArrayName" id="6727.ResultArrayName" number_of_elements="1">
-              <Element index="0" value="U"/>
-            </Property>
-            <Property name="ResultNormals" id="6727.ResultNormals" number_of_elements="1">
-              <Element index="0" value="0"/>
-              <Domain name="bool" id="6727.ResultNormals.bool"/>
-            </Property>
-            <Property name="ResultTCoords" id="6727.ResultTCoords" number_of_elements="1">
-              <Element index="0" value="0"/>
-              <Domain name="bool" id="6727.ResultTCoords.bool"/>
-            </Property>
-          </Proxy>
-          <ExposedProperties>
-            <Property name="Input" proxy_name="Calculator1" exposed_name="Input"/>
-          </ExposedProperties>
-          <OutputPort name="Output" proxy="Calculator1" port_index="0"/>
-          <Hints>
-            <ShowInMenu/>
-          </Hints>
-        </CompoundSourceProxy>
-      </CustomProxyDefinition>
-    </CustomProxyDefinitions>
     <Links>
       <GlobalPropertyLink global_name="BackgroundColor" proxy="2770" property="Background"/>
       <GlobalPropertyLink global_name="EdgeColor" proxy="4723" property="EdgeColor"/>

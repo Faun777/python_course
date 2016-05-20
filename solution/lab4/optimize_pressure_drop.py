@@ -12,7 +12,10 @@ def read_last_data(fileName):
 # f = "/home/wgryglas/simflow/python_course/python_course/postProcessing/outletTotalPressure/0/faceSource.dat"
 # print read_last_data(f)
 
-case = "/home/wgryglas/simflow/python_course/python_course"
+of.PARAVIEW ="/opt/ParaView-4.3.1-Linux-64bit/bin/paraview"
+of.OF_DIR = "/opt/openfoam231"
+
+case = "/home/wojtek/simflow/channel_optimization"
 totalPressureOutletValuse=os.path.join(case,"postProcessing","outletTotalPressure","0","faceSource.dat")
 
 
@@ -130,7 +133,7 @@ def update(params):
 of.clearCase(case)
 of.createBlockMesh(case)
 
-modifyMesh([0.1,0.1])
+#modifyMesh([0.1,0.1])
 
 of.view(case)
 
