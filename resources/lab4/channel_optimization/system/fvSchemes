@@ -1,0 +1,40 @@
+FoamFile
+{
+	version	2.0;
+	class	dictionary;
+	format	ascii;
+	location	"system";
+	object	fvSchemes;
+}
+ddtSchemes
+{
+	default	steadyState;
+}
+gradSchemes
+{
+	default	Gauss linear;
+}
+divSchemes
+{
+	default	bounded Gauss upwind;
+	div(phi,U)	bounded Gauss upwind;
+	div(R)	Gauss linear;
+	div((nuEff*dev(T(grad(U)))))	Gauss linear;
+}
+laplacianSchemes
+{
+	default	Gauss linear corrected;
+}
+interpolationSchemes
+{
+	default	linear;
+}
+snGradSchemes
+{
+	default	corrected;
+}
+fluxRequired
+{
+	default	no;
+	p	;
+}

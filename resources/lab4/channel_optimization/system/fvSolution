@@ -1,0 +1,56 @@
+FoamFile
+{
+	version	2.0;
+	class	dictionary;
+	format	ascii;
+	location	"system";
+	object	fvSolution;
+}
+solvers
+{
+	U
+	{
+		tolerance	1.0E-6;
+		preconditioner	DILU;
+		solver	PBiCG;
+		relTol	0.1;
+		maxIter	100;
+	}
+	p
+	{
+		nPostSweeps	1;
+		solver	GAMG;
+		smoother	GaussSeidel;
+		nFinalSweeps	0;
+		nPreSweeps	0;
+		nCellsInCoarsestLevel	100;
+		cacheAgglomeration	true;
+		maxIter	100;
+		tolerance	1.0E-6;
+		agglomerator	faceAreaPair;
+		relTol	0.1;
+		mergeLevels	1;
+	}
+}
+SIMPLE
+{
+	nNonOrthogonalCorrectors	1;
+	pRefCell	0;
+	pRefValue	0.0;
+	residualControl
+	{
+		U	1.0E-4;
+		p	1.0E-4;
+	}
+}
+relaxationFactors
+{
+	U	0.7;
+	p	0.3;
+}
+potentialFlow
+{
+	nNonOrthogonalCorrectors	10;
+	pRefCell	0;
+	pRefValue	0.0;
+}
