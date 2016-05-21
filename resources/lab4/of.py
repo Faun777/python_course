@@ -42,6 +42,9 @@ def createBlockMesh(casePath, output=True, openfoamDir=None):
     runBashCommands(casePath, output, "source "+bashrc, "blockMesh")
 
 
+def getStateFile(casePath):
+    return os.path.join(casePath,"postprocessing.pvsm")
+
 def __createStateFile__(casePath):
     name = os.path.basename(casePath)
     name += ".foam"
@@ -52,7 +55,7 @@ def __createStateFile__(casePath):
 
     open(os.path.join(casePath,name),"w").close()
 
-    state=os.path.join(casePath,"postprocessing.pvsm")
+    state=getStateFile(casePath)
     state2=os.path.join(casePath,"postprocessing2.pvsm")
 
     lines =[]
@@ -101,3 +104,35 @@ def hasMesh(case):
             required.remove(f)
 
     return len(required) == 0
+
+
+
+# Warning: to use this function Paraview and VTK from paraview location
+# (eg. /opt/paraview/lib/site-packages and /opt/paraview/lib/site-packages/vtk)
+# need to be added to PYTHONPATH,
+# Also you should add to LD_LIBRARY_PATH paraview libs path
+
+def saveCurrentImage(fname, casePath, colorby=None):
+    from paraview.simple import *
+
+    if not GetActiveSource():
+        __createStateFile__(casePath)
+        servermanager.LoadState(getStateFile(casePath))
+        SetActiveView(GetRenderView())
+
+        for source in GetSources():
+            # help(GetSources()[source])
+            SetActiveSource(GetSources()[source])
+
+        if colorby:
+            ColorBy(value=colorby)
+            UpdateScalarBars()
+
+    else:
+        GetActiveSource().Refresh()
+
+
+    WriteImage(fname)
+
+
+

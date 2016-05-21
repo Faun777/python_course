@@ -157,6 +157,8 @@ def modifyMesh(params):
 
 iterations =[]
 
+pictures="/home/wojtek/Documents/studia-doktoranckie/myccfd-courses/figures/python_inst05/optianimation"
+
 def update(params):
     of.clearResults(case)
     modifyMesh(params)
@@ -169,20 +171,28 @@ def update(params):
     objective= inletPtotalIntegral- outletPtotalIntegral
     iterations.append(objective)
 
+    of.saveCurrentImage(os.path.join(pictures,str(len(iterations))+".png"), case, colorby="U")#"total(p)"
+
     print objective
     return objective
+
 
 if not of.hasMesh(case):
     of.createBlockMesh(case)
 
 copyPoints(case,"points_source")
 
-result = optimize.fmin(update, [0.1, 0.1]) #, maxiter=12 #
+result = optimize.fmin(update, [0.05, 0.05]) #, maxiter=12 #
 #result = optimize.minimize(update, [0.1, 0.1], method="Nelder-Mead", options={'xtol':1e-6, 'maxiter':100})
 
-plt.figure()
-plt.plot(iterations)
-plt.show()
+# plt.figure()
+# plt.plot(iterations)
+# plt.title("Difference of inlet and outlet total pressure integrals")
+# plt.xlabel("Iteration No")
+# plt.ylabel("Integrall difference")
+# plt.grid(True)
+# plt.show()
 
-of.view(case)
+#of.view(case)
+
 
