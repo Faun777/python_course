@@ -38,6 +38,20 @@ functions
 		calcCoeff   false;
 	}
 
+	inletTotalPressure
+	{
+		operation	areaIntegrate;
+		enabled	true;
+		source	patch;
+		valueOutput	true;
+		sourceName	inlet;
+		functionObjectLibs	( "libfieldFunctionObjects.so" );
+		surfaceFormat	null;
+		type	faceSource;
+		log	true;
+		outputControl	outputTime;
+		fields	("total(p)");
+	}
 
 	outletTotalPressure
 	{

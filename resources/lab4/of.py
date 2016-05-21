@@ -5,38 +5,41 @@ PARAVIEW ="/home/wgryglas/Applications/ParaView-4.3.1-Linux-64bit/bin/paraview"
 
 
 
-def runBashCommands(cwd, *args):
+def runBashCommands(cwd, output, *args):
     command = "; ".join(args)
     process = subprocess.Popen(command, cwd=cwd, executable="/bin/bash", shell=True, stdout=subprocess.PIPE)
-    print process.communicate()[0]
+
+    com = process.communicate()[0]
+    if output:
+        print com
 
 
-def runCase(casePath, openfoamDir=None):
+def runCase(casePath, output=True, openfoamDir=None):
     if not openfoamDir:
         openfoamDir = OF_DIR
     bashrc = os.path.join(openfoamDir, "etc", "bashrc")
-    runBashCommands(casePath, "source "+bashrc, "simpleFoam")
+    runBashCommands(casePath, output, "source "+bashrc, "simpleFoam")
 
 
-def clearCase(casePath, openfoamDir=None):
+def clearCase(casePath, output=True, openfoamDir=None):
     if not openfoamDir:
         openfoamDir = OF_DIR
     clearFunctioinsFile = os.path.join(openfoamDir, "bin","tools","CleanFunctions")
-    runBashCommands(casePath, "source "+clearFunctioinsFile, "cleanCase")
+    runBashCommands(casePath, output, "source "+clearFunctioinsFile, "cleanCase")
 
 
-def clearResults(casePath, openfoamDir=None):
+def clearResults(casePath, output=True, openfoamDir=None):
     if not openfoamDir:
         openfoamDir = OF_DIR
     clearFunctioinsFile = os.path.join(openfoamDir, "bin","tools","CleanFunctions")
-    runBashCommands(casePath, "source "+clearFunctioinsFile, "cleanTimeDirectories", "rm -r postProcessing")
+    runBashCommands(casePath, output, "source "+clearFunctioinsFile, "cleanTimeDirectories", "rm -r postProcessing")
 
 
-def createBlockMesh(casePath, openfoamDir=None):
+def createBlockMesh(casePath, output=True, openfoamDir=None):
     if not openfoamDir:
         openfoamDir = OF_DIR
     bashrc = os.path.join(openfoamDir, "etc", "bashrc")
-    runBashCommands(casePath, "source "+bashrc, "blockMesh")
+    runBashCommands(casePath, output, "source "+bashrc, "blockMesh")
 
 
 def __createStateFile__(casePath):
@@ -83,7 +86,7 @@ def view(casePath, paraview=None):
         paraview = PARAVIEW
     __createStateFile__(casePath)
     state=os.path.join(casePath,"postprocessing.pvsm")
-    runBashCommands(casePath, paraview+" --state="+state)
+    runBashCommands(casePath, False, paraview+" --state="+state)
 
     # name = os.path.basename(casePath)
     # name += ".foam"

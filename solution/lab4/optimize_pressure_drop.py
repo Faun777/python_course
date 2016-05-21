@@ -1,8 +1,9 @@
 import numpy as np
 import os
-
+import matplotlib.pyplot as plt
 from resources.lab4 import of
-
+import shutil
+from scipy import optimize
 
 def read_last_data(fileName):
     data = np.loadtxt(fileName)
@@ -16,14 +17,20 @@ of.PARAVIEW ="/opt/ParaView-4.3.1-Linux-64bit/bin/paraview"
 of.OF_DIR = "/opt/openfoam231"
 
 case = "/home/wojtek/simflow/channel_optimization"
-totalPressureOutletValuse=os.path.join(case,"postProcessing","outletTotalPressure","0","faceSource.dat")
+totalPressureOutletValues=os.path.join(case,"postProcessing","outletTotalPressure","0","faceSource.dat")
+totalPressureInletValues=os.path.join(case,"postProcessing","inletTotalPressure","0","faceSource.dat")
 
 
-# of.createBlockMesh(case)
-
-def loadPoints(case):
+def copyPoints(case, fname):
     polyMesh = os.path.join(case,"constant","polyMesh")
     pntsPath = os.path.join(polyMesh, "points")
+    pntsNewPath = os.path.join(polyMesh, fname)
+    if not os.path.exists(pntsNewPath):
+        shutil.copy(pntsPath, pntsNewPath)
+
+def loadPoints(case, fname):
+    polyMesh = os.path.join(case,"constant","polyMesh")
+    pntsPath = os.path.join(polyMesh, fname)
 
     with open(pntsPath, "r") as pntsFile:
         l = pntsFile.readline()
@@ -75,16 +82,7 @@ def replacePoints(case, pnts):
         f.write(")")
 
 
-def modifyMesh(params):
-
-    points = loadPoints(case)
-
-    #plot:
-    import matplotlib.pyplot as plt
-    plt.figure()
-    plt.plot(points[:,0], points[:,1], ".", color="green")
-
-
+def modifyPoints1(params, points):
     tr = 0.15*np.sin(np.pi/4)
     probes = [[0.2 + tr, 0.2 - tr], [0.5 - tr, 0.2 + tr]]
     R = 0.1
@@ -106,34 +104,85 @@ def modifyMesh(params):
         vecs = vecs + probe
         points[nodes,:2] = vecs
 
+        #plot:
+        plt.plot(points[:,0], points[:,1], ".")
+        for probe in probes:
+            plt.plot(probe[0], probe[1], "*",color="red")
 
-    replacePoints(case, points)
+        for mod in modified:
+            plt.plot(points[mod,0],points[mod,1],".", color="red")
+
+    return points
+
+def modifyPoints2(params, points):
+
+    modifers = [ [ [0.2, 0.2], (points[:,0] > 0.2)*(points[:,1] < 0.2),[np.sqrt(2)/2, -np.sqrt(2)/2] ],\
+                 [ [0.5, 0.2], (points[:,0] < 0.5)*(points[:,1] > 0.2),[-np.sqrt(2)/2, np.sqrt(2)/2] ] ]
+
+    for mod, p in zip(modifers,params):
+        center, nodes, middle = mod
+
+        centerLine = points[nodes,:2] - center
+
+        centerLineNorm = np.copy(centerLine)
+        centerLineNorm[:,0] = centerLineNorm[:,0]/ np.sqrt(centerLine[:,0]**2 + centerLine[:,1]**2)
+        centerLineNorm[:,1] = centerLineNorm[:,1]/ np.sqrt(centerLine[:,0]**2 + centerLine[:,1]**2)
+
+        centerLine = centerLineNorm * 0.15 + center
+
+        angScale = centerLineNorm[:,0]*middle[0] + centerLineNorm[:,1]*middle[1] - np.sqrt(2)/2
+
+        fromCenterLine = points[nodes,:2] - centerLine
+
+        points[nodes, 0] = centerLine[:, 0] + fromCenterLine[:, 0]*(1+angScale*p)
+        points[nodes, 1] = centerLine[:, 1] + fromCenterLine[:, 1]*(1+angScale*p)
+
+        # plt.plot(points[nodes,0], points[nodes,1], ".", color="red")
+
+
+def modifyMesh(params):
+
+    points = loadPoints(case, "points_source")
 
     #plot:
-    plt.plot(points[:,0], points[:,1], ".")
-    for probe in probes:
-        plt.plot(probe[0], probe[1], "*",color="red")
+    # plt.figure()
+    # plt.plot(points[:,0], points[:,1], ".", color="green")
 
-    for mod in modified:
-        plt.plot(points[mod,0],points[mod,1],".", color="red")
+    modifyPoints2(params, points)
+
+    replacePoints(case, points)
 
     # plt.show()
 
 
+iterations =[]
 
 def update(params):
     of.clearResults(case)
     modifyMesh(params)
-    of.runCase(case)
-    return read_last_data(totalPressureOutletValuse)
 
+    of.runCase(case, output=False)
 
-#result = minimize(update, np.zeros(2), method="Nelder-Mead", options={'xtol':1e-6})
+    inletPtotalIntegral = read_last_data(totalPressureInletValues)
+    outletPtotalIntegral = read_last_data(totalPressureOutletValues)
 
-of.clearCase(case)
-of.createBlockMesh(case)
+    objective= inletPtotalIntegral- outletPtotalIntegral
+    iterations.append(objective)
 
-#modifyMesh([0.1,0.1])
+    print objective
+    return objective
+
+if not of.hasMesh(case):
+    of.createBlockMesh(case)
+
+copyPoints(case,"points_source")
+
+result = optimize.fmin(update, [0.1, 0.1]) #, maxiter=12 #
+#result = optimize.minimize(update, [0.1, 0.1], method="Nelder-Mead", options={'xtol':1e-6, 'maxiter':100})
+
+plt.figure()
+plt.plot(iterations)
+plt.show()
 
 of.view(case)
 
