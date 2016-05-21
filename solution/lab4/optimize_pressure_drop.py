@@ -25,8 +25,8 @@ def copyPoints(case, fname):
     polyMesh = os.path.join(case,"constant","polyMesh")
     pntsPath = os.path.join(polyMesh, "points")
     pntsNewPath = os.path.join(polyMesh, fname)
-    if not os.path.exists(pntsNewPath):
-        shutil.copy(pntsPath, pntsNewPath)
+    #if not os.path.exists(pntsNewPath):
+    shutil.copy(pntsPath, pntsNewPath)
 
 def loadPoints(case, fname):
     polyMesh = os.path.join(case,"constant","polyMesh")
@@ -119,10 +119,12 @@ def modifyPoints2(params, points):
     modifers = [ [ [0.2, 0.2], (points[:,0] > 0.2)*(points[:,1] < 0.2),[np.sqrt(2)/2, -np.sqrt(2)/2] ],\
                  [ [0.5, 0.2], (points[:,0] < 0.5)*(points[:,1] > 0.2),[-np.sqrt(2)/2, np.sqrt(2)/2] ] ]
 
-    for mod, p in zip(modifers,params):
+    joinedP = [params[:2], params[2:]]
+
+    for mod, param in zip(modifers, joinedP):
         center, nodes, middle = mod
 
-        centerLine = points[nodes,:2] - center
+        centerLine = points[:,:2] - center
 
         centerLineNorm = np.copy(centerLine)
         centerLineNorm[:,0] = centerLineNorm[:,0]/ np.sqrt(centerLine[:,0]**2 + centerLine[:,1]**2)
@@ -130,12 +132,18 @@ def modifyPoints2(params, points):
 
         centerLine = centerLineNorm * 0.15 + center
 
-        angScale = centerLineNorm[:,0]*middle[0] + centerLineNorm[:,1]*middle[1] - np.sqrt(2)/2
+        angScale = (centerLineNorm*middle).sum(axis=1) - np.sqrt(2)/2
 
-        fromCenterLine = points[nodes,:2] - centerLine
+        fromCenterLine = points[:,:2] - centerLine
 
-        points[nodes, 0] = centerLine[:, 0] + fromCenterLine[:, 0]*(1+angScale*p)
-        points[nodes, 1] = centerLine[:, 1] + fromCenterLine[:, 1]*(1+angScale*p)
+        side = (fromCenterLine*centerLineNorm).sum(axis=1)
+
+        sides = [side > 0, side <= 0]
+
+        for s, p in zip(sides, param):
+            s = s*nodes
+            points[s, 0] = centerLine[s, 0] + fromCenterLine[s, 0]*(1+angScale[s]*p)
+            points[s, 1] = centerLine[s, 1] + fromCenterLine[s, 1]*(1+angScale[s]*p)
 
         # plt.plot(points[nodes,0], points[nodes,1], ".", color="red")
 
@@ -143,15 +151,11 @@ def modifyPoints2(params, points):
 def modifyMesh(params):
 
     points = loadPoints(case, "points_source")
-
     #plot:
     # plt.figure()
     # plt.plot(points[:,0], points[:,1], ".", color="green")
-
     modifyPoints2(params, points)
-
     replacePoints(case, points)
-
     # plt.show()
 
 
@@ -171,27 +175,27 @@ def update(params):
     objective= inletPtotalIntegral- outletPtotalIntegral
     iterations.append(objective)
 
-    of.saveCurrentImage(os.path.join(pictures,str(len(iterations))+".png"), case, colorby="U")#"total(p)"
+    of.saveCurrentImage(os.path.join(pictures,str(len(iterations))+".png"), case, colorby="total(p)")#"U"
 
     print objective
     return objective
 
 
-if not of.hasMesh(case):
-    of.createBlockMesh(case)
-
+of.clearCase(case)
+of.createBlockMesh(case)
 copyPoints(case,"points_source")
 
-result = optimize.fmin(update, [0.05, 0.05]) #, maxiter=12 #
+result = optimize.fmin(update, [0.05, 0.05, 0.05, 0.05]) #, maxiter=12 #
 #result = optimize.minimize(update, [0.1, 0.1], method="Nelder-Mead", options={'xtol':1e-6, 'maxiter':100})
 
-# plt.figure()
-# plt.plot(iterations)
-# plt.title("Difference of inlet and outlet total pressure integrals")
-# plt.xlabel("Iteration No")
-# plt.ylabel("Integrall difference")
-# plt.grid(True)
-# plt.show()
+
+plt.figure()
+plt.plot(iterations)
+plt.title("Difference of inlet and outlet total pressure integrals")
+plt.xlabel("Iteration No")
+plt.ylabel("Integrall difference")
+plt.grid(True)
+plt.show()
 
 #of.view(case)
 
