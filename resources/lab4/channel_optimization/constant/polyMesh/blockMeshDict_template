@@ -1,0 +1,140 @@
+FoamFile
+{
+	version	2.0;
+	class	dictionary;
+	format	ascii;
+	location	"constant/polyMesh";
+	object	blockMeshDict;
+}
+convertToMeters	1;
+
+d  0.1;
+a  0.2;
+r  0.1;
+z  0.1;
+
+x0 0;
+y0 0;
+x1 $a;
+y1 0;
+x2 $a;
+y2 $d;
+x3 0;
+y3 $d;
+x4 __p4x__;//$a+$r+$d;
+y4 __p4y__;//$d+$r;
+x5 __p5x__;
+y5 __p5y__;
+x6 0.5;//$a+$2*$r+$d;
+y6 0.3;//$d+2*$r;
+x7 0.5;//$a+2*$r+$d;
+y7 0.4;//2*$d+2*$r;
+x8 0.7;//$a+2*$r+$d+$a;
+y8 0.3;//$d+2*$r;
+x9 0.7;//$a+2*$r+$d+$a;
+y9 0.4;//2*$d+2*$r;
+
+edges	
+(
+);
+
+
+vertices	(
+	($x0 $y0 0) //0
+	($x1 $y1 0) //1
+	($x2 $y2 0) //2
+	($x3 $y3 0) //3
+	($x4 $y4 0) //4
+	($x5 $y5 0) //5
+	($x6 $y6 0) //6
+	($x7 $y7 0) //7
+	($x8 $y8 0) //8
+	($x9 $y9 0) //9
+	
+	($x0 $y0 $z) //10
+	($x1 $y1 $z) //11
+	($x2 $y2 $z) //12
+	($x3 $y3 $z) //13
+	($x4 $y4 $z) //14
+	($x5 $y5 $z) //15
+	($x6 $y6 $z) //16
+	($x7 $y7 $z) //17
+	($x8 $y8 $z) //18
+	($x9 $y9 $z) //19
+	
+	
+);
+boundary	
+(
+	boundaries
+	{
+		type wall;
+		faces
+		(
+			(2 3 13 12)
+			(5 2 12 15)
+			(7 5 15 17)
+			(9 7 17 19)
+			
+			(6 8 18 16)
+			(4 6 16 14)
+			(1 4 14 11)
+			(0 1 11 10)
+		);
+	}
+	planes
+	{
+		type empty;
+		faces
+		(
+			(0 1 2 3)
+			(10 11 12 13)
+			(1 4 5 2)
+			(11 14 15 12)
+			(4 6 7 5)
+			(14 16 17 15)
+			(6 8 9 7)
+			(16 18 19 17)
+		);
+	}
+
+	inlet
+	{
+		type patch;
+		faces
+		(
+			(0 10 13 3)
+		);
+	}
+
+	outlet
+	{
+		type patch;
+		faces
+		(
+			(8 18 19 9)
+		);
+	}
+);
+
+
+edges
+(
+	arc 2 5 (__p10x__ __p10y__ 0)
+	arc 12 15 (__p10x__ __p10y__ $z)
+	arc 1 4 (__p11x__ __p11y__ 0)
+	arc 11 14 (__p11x__ __p11y__ $z)
+	arc 4 6 (__p12x__ __p12y__ 0)
+	arc 14 16 (__p12x__ __p12y__ $z)
+	arc 5 7 (__p13x__ __p13y__ 0)
+	arc 15 17 (__p13x__ __p13y__ $z)
+);
+
+
+blocks	
+(
+	hex (0 1 2 3 10 11 12 13) (10 10 1) simpleGrading (1 1 1)
+	hex (1 4 5 2 11 14 15 12) (10 10 1) simpleGrading (1 1 1)
+	hex (4 6 7 5 14 16 17 15) (10 10 1) simpleGrading (1 1 1)
+	hex (6 8 9 7 16 18 19 17) (10 10 1) simpleGrading (1 1 1)
+);

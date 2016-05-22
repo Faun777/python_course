@@ -84,7 +84,27 @@ def __createStateFile__(casePath):
     os.rename(state2, state)
 
 
-def view(casePath, paraview=None):
+def view(casePath, colorby=None):
+    from paraview.simple import *
+
+    if not GetActiveSource():
+        __createStateFile__(casePath)
+        servermanager.LoadState(getStateFile(casePath))
+        SetActiveView(GetRenderView())
+
+        for source in GetSources():
+            # help(GetSources()[source])
+            SetActiveSource(GetSources()[source])
+        if colorby:
+            ColorBy(value=colorby)
+            UpdateScalarBars()
+    else:
+        GetActiveSource().Refresh()
+
+    Render()
+
+
+def parview(casePath, paraview=None):
     if not paraview:
         paraview = PARAVIEW
     __createStateFile__(casePath)
@@ -113,25 +133,8 @@ def hasMesh(case):
 # Also you should add to LD_LIBRARY_PATH paraview libs path
 
 def saveCurrentImage(fname, casePath, colorby=None):
-    from paraview.simple import *
-
-    if not GetActiveSource():
-        __createStateFile__(casePath)
-        servermanager.LoadState(getStateFile(casePath))
-        SetActiveView(GetRenderView())
-
-        for source in GetSources():
-            # help(GetSources()[source])
-            SetActiveSource(GetSources()[source])
-
-        if colorby:
-            ColorBy(value=colorby)
-            UpdateScalarBars()
-
-    else:
-        GetActiveSource().Refresh()
-
-
+    view(casePath,colorby)
+    from paraview.simple import WriteImage
     WriteImage(fname)
 
 
