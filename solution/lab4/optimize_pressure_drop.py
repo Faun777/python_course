@@ -13,11 +13,11 @@ def read_last_data(fileName):
 # f = "/home/wgryglas/simflow/python_course/python_course/postProcessing/outletTotalPressure/0/faceSource.dat"
 # print read_last_data(f)
 
-of.PARAVIEW ="/opt/ParaView-4.3.1-Linux-64bit/bin/paraview"
-of.OF_DIR = "/opt/openfoam231"
+of.PARAVIEW ="/home/wgryglas/Applications/ParaView-4.3.1-Linux-64bit/bin/paraview"#"/opt/ParaView-4.3.1-Linux-64bit/bin/paraview"
+of.OF_DIR = "/opt/openfoam30"
 
-resourcesPath="/home/wojtek/pyhon/python_course/resources"
-casePath = "/home/wojtek/simflow/channel_optimization"
+resourcesPath="/home/wgryglas/Documents/dydaktyka/python_course/resources"
+casePath = "/home/wgryglas/simflow/channel_optimization"
 totalPressureOutletValues=os.path.join(casePath,"postProcessing","outletTotalPressure","0","faceSource.dat")
 totalPressureInletValues=os.path.join(casePath,"postProcessing","inletTotalPressure","0","faceSource.dat")
 
@@ -279,7 +279,12 @@ def update(params, *args):
     inletPtotalIntegral = read_last_data(totalPressureInletValues)
     outletPtotalIntegral = read_last_data(totalPressureOutletValues)
 
-    objective = inletPtotalIntegral- outletPtotalIntegral
+    #objective = inletPtotalIntegral - outletPtotalIntegral
+    try:
+        objective = inletPtotalIntegral - outletPtotalIntegral
+    except Exception:
+        objective = float("inf")
+
     iterations.append(objective)
 
     # of.saveCurrentImage(os.path.join(pictures,str(len(iterations))+".png"), case, colorby="total(p)")#"U"
@@ -289,7 +294,8 @@ def update(params, *args):
     return objective
 
 
-result = optimize.fmin(update, [0.1, 0.2, 0.1, 0.2], args="disp4")
+# result = optimize.fmin(update, [0.1, 0.2, 0.1, 0.2], args="disp2")
+result = optimize.minimize(update, [0.1, 0.2, 0.1, 0.2], args="disp4", method="Nelder-Mead")
 
 
 plt.figure()
@@ -301,6 +307,6 @@ plt.grid(True)
 plt.show()
 
 
-#of.parview(case)
+# of.parview(casePath)
 
 

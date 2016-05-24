@@ -4,8 +4,6 @@ FoamFile
 	class	dictionary;
 	format	ascii;
 	location	"constant";
-	object	RASProperties;
+	object	turbulenceProperties;
 }
-printCoeffs	on;
-RASModel	laminar;
-turbulence	true;
+simulationType	laminar;
