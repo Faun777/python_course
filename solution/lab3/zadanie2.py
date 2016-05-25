@@ -23,7 +23,7 @@ c = a*dt/delta**2
 
 #time loop
 for t in time:
-    print "time:",t
+    print("time:",t)
 
     #Equation for new time solution - explicite euler sheme:
     # (Tn - T0)/dt -a*laplacian(T0)=0

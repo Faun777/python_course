@@ -42,7 +42,7 @@ def animate_contour_plot(framesDatas, sizeX=(0,1), sizeY=(0,1), dataRange=None, 
             plt.title('Frame %d' % (i+1))
             return cs
 
-        anim = animation.FuncAnimation(fig, animate, frames=len(framesDatas)/skip , interval=5, repeat=repeat)
+        anim = animation.FuncAnimation(fig, animate, frames=int(len(framesDatas)/skip) , interval=5, repeat=repeat)
 
     plt.show()
 
